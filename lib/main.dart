@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_drum_machine_demo/services/sampler.dart';
 import 'package:flutter_drum_machine_demo/views/display.dart';
+import 'package:flutter_drum_machine_demo/views/pad_bank.dart';
 import 'package:flutter_drum_machine_demo/views/sequencer.dart';
 import 'package:flutter_drum_machine_demo/views/transport.dart';
-import 'package:flutter_drum_machine_demo/views/pad-bank.dart';
 
 void main() async {
 
@@ -18,6 +18,8 @@ void main() async {
 class Game extends StatelessWidget {
 
 	final String _title = "Flutter Beat Machine Demo";
+
+  const Game({super.key});
 
 	@override
 	Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_drum_machine_demo/services/audio-engine.dart';
-import 'package:flutter_drum_machine_demo/views/base-widget.dart';
+import 'package:flutter_drum_machine_demo/services/audio_engine.dart';
+import 'package:flutter_drum_machine_demo/services/state.dart';
+import 'package:flutter_drum_machine_demo/views/base_widget.dart';
 
 class BPMSelector extends StatelessWidget {
 
@@ -16,7 +17,7 @@ class BPMSelector extends StatelessWidget {
 		
 		WidgetsBinding.instance.addPostFrameCallback((_) => _controller.jumpTo(offset));
 
-		TextStyle style = Theme.of(context).textTheme.headline5;
+		TextStyle? style = Theme.of(context).textTheme.headline5;
 
 		return Dialog(
 			backgroundColor: Colors.black38,
@@ -44,8 +45,7 @@ class BPMSelector extends StatelessWidget {
 }
 
 class Display extends BaseWidget {
-
-	Display({Key key}) : super(key: key);
+  const Display({super.key});
 
 	@override
 	_DisplayState createState() => _DisplayState();
@@ -53,17 +53,17 @@ class Display extends BaseWidget {
 
 class _DisplayState extends BaseState<Display> {
 
-	Color _color = Color.lerp(Colors.brown, Colors.black, 0.7);
+	Color? _color = Color.lerp(Colors.brown, Colors.black, 0.7);
 
 	String get _label => AudioEngine.bpm.toString() + 'bpm';
-	bool get _isRunning => AudioEngine.state != ControlState.READY;
+	bool get _isRunning => AudioEngine.state != ControlState.ready;
 	int get _step => AudioEngine.step;
 
 	@override
 	Widget build(BuildContext context) {
 
 		double labelWidth = MediaQuery.of(context).size.width / 5;
-		TextStyle style = Theme.of(context).textTheme.overline;
+		TextStyle? style = Theme.of(context).textTheme.overline;
 
 		return Container(
 			height: 48,

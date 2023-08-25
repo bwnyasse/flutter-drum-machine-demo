@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_drum_machine_demo/services/audio-engine.dart';
+import 'package:flutter_drum_machine_demo/services/audio_engine.dart';
+import 'package:flutter_drum_machine_demo/services/event.dart';
 import 'package:flutter_drum_machine_demo/services/sampler.dart';
 import 'package:flutter_drum_machine_demo/views/track.dart';
 
+
 class Sequencer extends StatelessWidget {
 
-	Sequencer({Key key}) : super(key: key);
 
 	final BorderSide _border = BorderSide(color: Colors.amber.withOpacity(0.4));
+
+  Sequencer({super.key});
 
 	@override
 	Widget build(BuildContext context) {
@@ -30,14 +33,14 @@ class Sequencer extends StatelessWidget {
 									children: <Widget>[
 										InkWell(
 											enableFeedback: false,
-											onTap: () => AudioEngine.on<PadEvent>(PadEvent(DRUM_SAMPLE.values[i])),
+											onTap: () => AudioEngine.on<PadEvent>(PadEvent(DrumSample.values[i])),
 											child: Container(
 												width: labelWidth,
 												color: Sampler.colors[i].withOpacity(0.2),
-												child: Center(child: Text(Sampler.samples[DRUM_SAMPLE.values[i]]))
+												child: Center(child: Text(Sampler.samples[DrumSample.values[i]]!))
 											),
 										),
-										Track(sample: DRUM_SAMPLE.values[i])
+										Track(sample: DrumSample.values[i])
 									]
 								)
 							)

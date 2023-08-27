@@ -10,7 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   audioplayers: ^5.1.0
-
+  audioplayers_darwin: ^5.0.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

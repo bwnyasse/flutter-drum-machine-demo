@@ -29,11 +29,14 @@ abstract class Sampler {
       samples.length, (i) => samples[DrumSample.values[i]]! + _ext);
 
   static final _cache = AudioCache();
-  static final _player = AudioPlayer();
-  static Future<void> init() => _cache.loadAll(_files);
+  static final _player = AudioPlayer()..setReleaseMode(ReleaseMode.stop);
+  static Future<void> init() {
+    return _cache.loadAll(_files);
+  }
 
   static Future<void> play(DrumSample sample) async {
     Uri fetchToMemory = await _cache.fetchToMemory('${samples[sample]!}$_ext');
+    await _player.setSourceDeviceFile(fetchToMemory.toFilePath());
     return _player.play(
       UrlSource(fetchToMemory.toFilePath()),
       mode: PlayerMode.lowLatency,

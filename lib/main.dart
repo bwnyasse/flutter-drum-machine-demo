@@ -17,7 +17,7 @@ void main() async {
 
 class Game extends StatelessWidget {
 
-	final String _title = "Flutter Beat Machine Demo";
+	final String _title = "Beat Machine";
 
   const Game({super.key});
 
